@@ -1,0 +1,77 @@
+﻿@model MenuItem
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<h3>MenuItem</h3>
+<form asp-controller="Admin" asp-action="Create" class="form-horizontal">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="DeliveryStatus" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="DeliveryStatus" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="LaunchDate" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="LaunchDate" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="Active" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="Active" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="CategoryId" class="col-sm-2 col-form-label">Category</label>
+            <div class="col-sm-3">
+                @*<input asp-for="LaunchDate" class="form-control" />*@
+                @* @Html.DropDownListFor() *@
+                @*<select asp-for="category" asp-items="@ViewBag.categories">*@
+                <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.categories,"Id","Name"))"></select>
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-light btn-outline-secondary" value="Save" />
+
+
+</form>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

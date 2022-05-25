@@ -1,0 +1,31 @@
+﻿@model List<Cart>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>View Cart</h2>
+@if (Model.Count == 0)
+{
+    <p>No items in cart.<a asp-controller="Customer" asp-action="Index">View menu items</a></p>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Free Delivery</th>
+        <th scope="col">Price</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MenuItem.Name</td>
+            <td>
+                <input type="checkbox" checked="@item.MenuItem.DeliveryStatus" onclick="return false;" />
+            </td>
+            <td>@item.MenuItem.Price</td>
+            <td><a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Id">Remove</a></td>
+        </tr>
+    }
+</table>
+}

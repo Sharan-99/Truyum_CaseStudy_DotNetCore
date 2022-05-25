@@ -1,0 +1,92 @@
+﻿@model MenuItem
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<h1>Edit</h1>
+<h3>Menu Item</h3>
+
+<form asp-controller="Admin" asp-action="Edit" class="form-horizontal">
+    <div asp-validation-summary="All"></div>
+    @Html.HiddenFor(Model => Model.Id)
+
+
+   
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.Name" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name"></span>
+            </div>
+        </div>
+    </div>
+
+
+   
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.DeliveryStatus" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="@Model.DeliveryStatus" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.Price" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="@Model.Price" class="form-control" />
+                <span asp-validation-for="@Model.Price"></span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.LaunchDate" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <input asp-for="@Model.LaunchDate" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.CategoryId" class="col-sm-2 col-form-label">Category</label>
+            <div class="col-sm-3">
+                <select asp-for="@Model.CategoryId" asp-items="@(new SelectList(ViewBag.categories,"Id","Name"))"></select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <label asp-for="@Model.Active" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-3">
+                <div class="form-check">
+                    <input class="form-check-input" asp-for="@Model.Active" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input type="submit" value="Save" />
+    <a asp-controller="Admin" asp-action="Index">Back to list</a>
+ </form>
+
+    
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

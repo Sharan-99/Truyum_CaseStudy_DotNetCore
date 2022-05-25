@@ -1,0 +1,29 @@
+﻿@model List<MenuItem>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Menu Items</h2>
+
+<table class="table">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Free Delivery</th>
+        <th scope="col">Price</th>
+        <th scope="col">Name</th>
+        <th scopr="col">Action</th>
+    </tr>
+    @foreach (var item in Model)
+    { 
+        <tr>
+            <td>@item.Name</td>
+            <td>
+                <input type="checkbox" checked="@item.DeliveryStatus" onclick="return false;" />
+            </td>
+            <td>@item.Price</td>
+            <td>@item.category.Name</td>
+            <td><a asp-controller="Customer" asp-action="Add" asp-route-id="@item.Id">Add to Cart</a></td>
+        </tr>
+    }
+   
+</table>
